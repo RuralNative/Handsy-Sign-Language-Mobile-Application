@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Handsy-Sign-Language-Tutorial</string>
+    <string name="simplified_app_name">Handsy</string>
+    <string name="complementary_app_name">FSL Application</string>
 </resources>
