@@ -7,7 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    //DEFAULT -- Green Shades
-    <color name="emerald_green">#50C878</color>
-    <color name="kelly_green">#4CBB17</color>
+    //DEFAULT -- Green Shades (NORMAL)
+    <color name="primaryGreen_Normal">#FF5FBF00</color>
+    <color name="secondaryGreen_Normal">#73C720</color>
+    <color name="tertiaryGreen_Normal">#AFDF80</color>
+    <color name="accentGreen_Normal">#FFC107</color>
 </resources>
