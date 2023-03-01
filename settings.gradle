@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "Handsy Mobile Application"
+rootProject.name = "Handsy-Sign-Language-Tutorial"
 include ':app'

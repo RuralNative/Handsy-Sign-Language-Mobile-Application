@@ -1,4 +1,4 @@
-package com.ruralnative.handsymobileapplication;
+package com.ruralnative.handsy_sign_language_tutorial;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.ruralnative.handsymobileapplication", appContext.getPackageName());
+        assertEquals("com.ruralnative.handsy_sign_language_tutorial", appContext.getPackageName());
     }
 }

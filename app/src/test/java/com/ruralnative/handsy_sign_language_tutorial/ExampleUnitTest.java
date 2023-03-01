@@ -1,4 +1,4 @@
-package com.ruralnative.handsymobileapplication;
+package com.ruralnative.handsy_sign_language_tutorial;
 
 import org.junit.Test;
 
