@@ -4,4 +4,7 @@
     <string name="simplified_app_name">Handsy</string>
     <string name="complementary_app_name">FSL Tutorial</string>
     <string name="logo_description">Official Logo/Mascot of Handsy</string>
+    <string name="title_activity_developers_message_screen">DevelopersMessageScreen</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

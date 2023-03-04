@@ -12,10 +12,20 @@
         android:theme="@style/Theme.HandsySignLanguageTutorial"
         tools:targetApi="31">
         <activity
+            android:name=".DevelopersMessageScreen"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_developers_message_screen"
+            android:theme="@style/Theme.HandsySignLanguageTutorial.Fullscreen" />
+        <activity
+            android:name=".UserIntroductionScreen"
+            android:exported="false" />
+        <activity
             android:name="com.ruralnative.handsy_sign_language_tutorial.WelcomeScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
