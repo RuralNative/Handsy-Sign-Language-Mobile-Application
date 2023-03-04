@@ -6,4 +6,84 @@
     android:layout_height="match_parent"
     tools:context=".introductoryScreen.DevelopersMessageScreen">
 
+    <LinearLayout
+        android:id="@+id/header_Layout"
+        android:layout_width="0dp"
+        android:layout_height="40sp"
+        android:background="@color/primary_color"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/header_logo"
+            android:layout_width="15sp"
+            android:layout_height="30sp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:contentDescription="@string/logo_description"
+            app:srcCompat="@drawable/mascot_official"
+            tools:ignore="ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/header_title"
+            android:layout_width="300sp"
+            android:layout_height="50sp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/feather_font"
+            android:gravity="left|center_vertical"
+            android:text="@string/simplified_app_name"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:ignore="RtlHardcoded,VisualLintBounds" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/main_Mascot"
+        android:layout_width="270sp"
+        android:layout_height="270sp"
+        android:layout_marginBottom="270dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/logo_description"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/header_Layout"
+        app:srcCompat="@drawable/mascot_official" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/developerMessageTextView"
+            android:layout_width="match_parent"
+            android:layout_height="250sp"
+            android:fontFamily="@font/celebes_regular"
+            android:text="@string/devMessage"
+            android:textColor="@color/black"
+            android:textSize="21sp"
+            tools:ignore="VisualLintLongText" />
+
+        <Button
+            android:id="@+id/continueButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/secondary_color"
+            android:fontFamily="@font/feather_font"
+            android:text="@string/introductoryContinueButton"
+            android:textColor="@color/black"
+            tools:ignore="VisualLintButtonSize" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
