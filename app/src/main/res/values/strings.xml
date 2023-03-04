@@ -1,5 +1,7 @@
 <resources>
+    //Global
     <string name="app_name">Handsy-Sign-Language-Tutorial</string>
     <string name="simplified_app_name">Handsy</string>
-    <string name="complementary_app_name">FSL Application</string>
+    <string name="complementary_app_name">FSL Tutorial</string>
+    <string name="logo_description">Official Logo/Mascot of Handsy</string>
 </resources>

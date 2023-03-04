@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textAlignment="center"
-    tools:context=".welcomeScreen.WelcomeScreenActivity">
+    tools:context=".WelcomeScreenActivity">
 
     <LinearLayout
         android:id="@+id/mainLayout"
@@ -26,17 +26,26 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
+
+            <ImageView
+                android:id="@+id/mascot"
+                android:layout_width="170sp"
+                android:layout_height="145sp"
+                android:contentDescription="@string/logo_description"
+                app:srcCompat="@drawable/mascot_official"
+                tools:ignore="ImageContrastCheck" />
 
             <TextView
                 android:id="@+id/introductoryText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/feather_font"
-                android:text="HANDSY"
+                android:text="@string/simplified_app_name"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="34sp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/complementaryText"
@@ -45,10 +54,11 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/feather_font"
                 android:gravity="center_horizontal|center_vertical"
-                android:text="FSL Tutorial"
+                android:text="@string/complementary_app_name"
                 android:textAlignment="center"
                 android:textColor="@color/tertiary_color"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                tools:ignore="TextContrastCheck" />
         </LinearLayout>
 
     </LinearLayout>
