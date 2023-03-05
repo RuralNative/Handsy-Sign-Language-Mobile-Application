@@ -12,6 +12,14 @@
         android:theme="@style/Theme.HandsySignLanguageTutorial"
         tools:targetApi="31">
         <activity
+            android:name=".MainScreen"
+            android:exported="false" />
+        <activity
+            android:name=".mainScreen"
+            android:exported="false"
+            android:label="@string/title_activity_main_screen"
+            android:theme="@style/Theme.HandsySignLanguageTutorial.NoActionBar" />
+        <activity
             android:name=".DevelopersMessageScreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"

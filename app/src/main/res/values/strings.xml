@@ -12,4 +12,13 @@
     <string name="devMessage">Handsy Sign Language Tutorial is a mobile application with the purpose of providing an accessible platform for learning the Filipino Sign Language for anyone, but most especially for those who are auditory and hearing impaired.\n \nWe hope you enjoy  using this application
     </string>
     <string name="introductoryContinueButton">Start Your Journey</string>
+    <string name="title_activity_main_screen">mainScreen</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
