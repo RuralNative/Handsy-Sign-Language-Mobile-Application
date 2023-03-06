@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".lessonAndTest.LessonActivity">
+
+    <LinearLayout
+        android:id="@+id/header_Layout"
+        android:layout_width="0dp"
+        android:layout_height="40sp"
+        android:background="@color/primary_color"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/header_logo"
+            android:layout_width="15sp"
+            android:layout_height="30sp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:contentDescription="@string/logo_description"
+            app:srcCompat="@drawable/mascot_official"
+            tools:ignore="ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/header_title"
+            android:layout_width="300sp"
+            android:layout_height="50sp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:fontFamily="@font/feather_font"
+            android:gravity="left|center_vertical"
+            android:text="@string/simplified_app_name"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            tools:ignore="RtlHardcoded,VisualLintBounds" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/lesson_picture"
+        android:layout_width="200sp"
+        android:layout_height="200sp"
+        android:layout_marginTop="50dp"
+        android:src="@android:drawable/picture_frame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/header_Layout" />
+
+    <Button
+        android:id="@+id/continue_button"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20sp"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="627dp"
+        android:layout_marginEnd="146dp"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="1"
+        android:width="120dp"
+        android:height="48dp"
+        android:backgroundTint="@color/secondary_color"
+        android:fontFamily="@font/feather_font"
+        android:gravity="center|center_vertical"
+        android:minHeight="48dp"
+        android:text="@string/continueButton"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_Layout"
+        tools:ignore="VisualLintButtonSize,TextContrastCheck" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

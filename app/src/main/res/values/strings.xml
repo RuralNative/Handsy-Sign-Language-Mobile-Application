@@ -15,6 +15,6 @@
     <!-- Main Screen -->
     <string name="lessonButtonString">LESSONS</string>
     <string name="statsButtonString">STATS</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Lesson -->
+    <string name="continueButton">CONTINUE</string>
 </resources>

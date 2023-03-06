@@ -12,6 +12,9 @@
         android:theme="@style/Theme.HandsySignLanguageTutorial"
         tools:targetApi="31">
         <activity
+            android:name=".lessonAndTest.LessonActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainScreen"
             android:exported="false" />
         <activity
@@ -29,7 +32,7 @@
             android:name=".UserIntroductionScreen"
             android:exported="false" />
         <activity
-            android:name="com.ruralnative.handsy_sign_language_tutorial.WelcomeScreenActivity"
+            android:name=".WelcomeScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
