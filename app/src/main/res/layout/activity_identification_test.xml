@@ -9,7 +9,9 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        tools:layout_editor_absoluteX="-117dp"
+        tools:layout_editor_absoluteY="-16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main_layout"
@@ -53,11 +55,11 @@
 
             <ImageView
                 android:id="@+id/hand_sign_picture"
-                android:layout_width="300sp"
-                android:layout_height="300sp"
-                android:layout_marginStart="56dp"
+                android:layout_width="350sp"
+                android:layout_height="350sp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
-                android:layout_marginEnd="55dp"
+                android:layout_marginEnd="30dp"
                 android:contentDescription="@string/default_media_content"
                 android:src="@android:drawable/picture_frame"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -65,24 +67,27 @@
                 app:layout_constraintTop_toBottomOf="@+id/header_Layout"
                 app:srcCompat="@android:drawable/divider_horizontal_bright" />
 
-            <TextView
-                android:id="@+id/lesson_description"
+            <EditText
+                android:id="@+id/answer_box"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="56dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="55dp"
-                android:layout_marginBottom="10dp"
-                android:height="200sp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="30dp"
+                android:autofillHints=""
+                android:background="@color/white"
+                android:backgroundTint="@color/grey"
+                android:ems="10"
                 android:fontFamily="@font/celebes_regular"
-                android:text="@string/default_lesson_content"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:paddingHorizontal="10sp"
+                android:paddingVertical="10sp"
+                android:text="@string/test_default_answer_context"
                 android:textColor="@color/black"
-                android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@+id/check_button"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/hand_sign_picture"
-                app:layout_wrapBehaviorInParent="vertical_only" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <Button
                 android:id="@+id/check_button"
@@ -96,11 +101,11 @@
                 android:layout_weight="1"
                 android:width="120dp"
                 android:height="48dp"
-                android:backgroundTint="@color/secondary_color"
+                android:backgroundTint="@color/primary_color"
                 android:fontFamily="@font/feather_font"
                 android:gravity="center|center_vertical"
                 android:minHeight="48dp"
-                android:text="@string/continueButton"
+                android:text="@string/test_check_button"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -109,5 +114,4 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

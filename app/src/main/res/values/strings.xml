@@ -26,4 +26,5 @@
     <string name="default_third_choice">Third Choice</string>
     <string name="default_fourth_choice">Fourth Choice</string>
     <string name="test_check_button">CHECK</string>
+    <string name="test_default_answer_context">Input Text</string>
 </resources>
