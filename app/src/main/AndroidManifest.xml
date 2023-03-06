@@ -12,6 +12,12 @@
         android:theme="@style/Theme.HandsySignLanguageTutorial"
         tools:targetApi="31">
         <activity
+            android:name=".IdentificationTestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MultipleChoiceTestActivity"
+            android:exported="false" />
+        <activity
             android:name=".lessonAndTest.LessonActivity"
             android:exported="false" />
         <activity

@@ -17,4 +17,13 @@
     <string name="statsButtonString">STATS</string>
     <!-- Lesson -->
     <string name="continueButton">CONTINUE</string>
+    <string name="lesson_scrollview_description">Scroll View for the Application Lesson excluding Header</string>
+    <string name="default_lesson_content">Default content for the hand sign lesson in text format</string>
+    <string name="default_media_content">Default content for the hand sign lesson media format</string>
+    <!-- Lesson -->
+    <string name="default_first_choice">First Choice</string>
+    <string name="default_second_choice">Second Choice</string>
+    <string name="default_third_choice">Third Choice</string>
+    <string name="default_fourth_choice">Fourth Choice</string>
+    <string name="test_check_button">CHECK</string>
 </resources>
