@@ -1,6 +1,7 @@
 package com.ruralnative.handsy_sign_language_tutorial;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -30,6 +31,7 @@ public class ExampleInstrumentedTest {
     private final String numberOfCorrectTestAnswersColumn = "number_of_correct_test_answers";
     private final String numberOfWrongTestAnswerColumn = "number_of_wrong_test_answer";
     private final String accuracyPercentageColumn = "accuracy_percentage";
+    String[] dataRowArray;
 
 
     @Before
@@ -38,6 +40,7 @@ public class ExampleInstrumentedTest {
         Log.d("TEST", "Context: " + context);
         helper = new DatabaseHelper(context);
         SQLiteDatabase database = helper.getWritableDatabase();
+        insertSampleData();
     }
 
     private void insertSampleData() {
@@ -51,66 +54,51 @@ public class ExampleInstrumentedTest {
         helper.insertIntegerColumnDataByID(60, tableName, numberOfCorrectTestAnswersColumn, 1);
         helper.insertIntegerColumnDataByID(40, tableName, numberOfWrongTestAnswerColumn, 1);
         helper.insertTextColumnDataByID("60%", tableName, accuracyPercentageColumn, 1);
+        dataRowArray = helper.selectRowDataWithID(tableName, 1);
     }
 
+
     @Test
-    public void testIfIDInsertionSuccessful() {
-        insertSampleData();
-        String[] dataRowArray = helper.selectRowDataWithID(tableName, 1);
+    public void testIfIDInsertionSuccessful(){
         assertEquals(dataRowArray[0], "1");
     }
     @Test
     public void testIfUserNameInsertionSuccessful() {
-        insertSampleData();
-        String[] dataRowArray = helper.selectRowDataWithID(tableName, 1);
         assertEquals(dataRowArray[1], "John Berlin");
     }
     @Test
     public void testIfAgeInsertionSuccessful() {
-        insertSampleData();
-        String[] dataRowArray = helper.selectRowDataWithID(tableName, 1);
+        for (int i = 0; i < dataRowArray.length; i++) {
+            System.out.println(dataRowArray[i]);
+        }
         assertEquals(dataRowArray[2], "20");
     }
     @Test
     public void testIfPWDBooleanInsertionSuccessful() {
-        insertSampleData();
-        String[] dataRowArray = helper.selectRowDataWithID(tableName, 1);
         assertEquals(dataRowArray[3], "0");
     }
     @Test
     public void testIfNewUserBooleanInsertionSuccessful() {
-        insertSampleData();
-        String[] dataRowArray = helper.selectRowDataWithID(tableName, 1);
         assertEquals(dataRowArray[4], "0");
     }
     @Test
     public void testIfLessonLevelInsertionSuccessful() {
-        insertSampleData();
-        String[] dataRowArray = helper.selectRowDataWithID(tableName, 1);
         assertEquals(dataRowArray[5], "1");
     }
     @Test
     public void testIfTotalTestInsertionSuccessful() {
-        insertSampleData();
-        String[] dataRowArray = helper.selectRowDataWithID(tableName, 1);
         assertEquals(dataRowArray[6], "100");
     }
     @Test
     public void testIfCorrectTestInsertionSuccessful() {
-        insertSampleData();
-        String[] dataRowArray = helper.selectRowDataWithID(tableName, 1);
         assertEquals(dataRowArray[7], "60");
     }
     @Test
     public void testIfIncorrectTestInsertionSuccessful() {
-        insertSampleData();
-        String[] dataRowArray = helper.selectRowDataWithID(tableName, 1);
         assertEquals(dataRowArray[8], "40");
     }
     @Test
     public void testIfAccuracyPercentageInsertionSuccessful() {
-        insertSampleData();
-        String[] dataRowArray = helper.selectRowDataWithID(tableName, 1);
         assertEquals(dataRowArray[9], "60%");
     }
 }

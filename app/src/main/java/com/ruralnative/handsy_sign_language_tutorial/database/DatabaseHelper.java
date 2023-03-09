@@ -16,18 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     private static final int DATABASE_VERSION = 1;
     private final SQLiteDatabase readableDatabase = this.getReadableDatabase();
     private final SQLiteDatabase writableDatabase = this.getWritableDatabase();
-    String createUserInformationTableQuery = "CREATE TABLE user_information_table (" +
-            "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            "user_name TEXT, " +
-            "age INTEGER, " +
-            "is_person_with_disability INTEGER, " +
-            "is_new_user INTEGER, " +
-            "lesson_level INTEGER, " +
-            "total_number_of_test_taken INTEGER, " +
-            "number_of_correct_test_answers INTEGER, " +
-            "number_of_wrong_test_answer INTEGER, " +
-            "accuracy_percentage TEXT " +
-            ") ";
+    String createUserInformationTableQuery = "CREATE TABLE user_information_table (id INTEGER PRIMARY KEY AUTOINCREMENT, user_name TEXT, age INTEGER, is_person_with_disability INTEGER, is_new_user INTEGER, lesson_level INTEGER, total_number_of_test_taken INTEGER, number_of_correct_test_answers INTEGER, number_of_wrong_test_answer INTEGER, accuracy_percentage TEXT)";
     String createLessonInformationTableQuery = "CREATE TABLE lesson_information_table (" +
             "ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "lesson_name TEXT, " +
@@ -101,7 +90,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         } catch (SQLiteException sqLiteException) {
             sqLiteException.printStackTrace();
         }
-        readableDatabase.close();
         return data;
     }
 
@@ -122,7 +110,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         } catch (SQLiteException sqLiteException) {
             sqLiteException.printStackTrace();
         }
-        readableDatabase.close();
         return result;
     }
 
@@ -138,7 +125,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         } catch (SQLiteException sqLiteException) {
             sqLiteException.printStackTrace();
         }
-        writableDatabase.close();
     }
 
     //Insert integer data to a certain table column by ID
@@ -153,7 +139,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         } catch (SQLiteException sqle) {
             sqle.printStackTrace();
         }
-        writableDatabase.close();
     }
 
     //Insert integer data to a certain table column by ID
@@ -168,7 +153,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         } catch (SQLiteException sqle) {
             sqle.printStackTrace();
         }
-        writableDatabase.close();
     }
 
     //Update with a certain integer value the data in a certain table column of specific ID
@@ -184,7 +168,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         } catch (SQLiteException sqLiteException) {
             sqLiteException.printStackTrace();
         }
-        writableDatabase.close();
     }
 
     //Update with a certain String value the data in a certain table column of specific ID
@@ -198,6 +181,15 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         } catch (SQLiteException sqLiteException) {
             sqLiteException.printStackTrace();
         }
+    }
+
+    //Close readable database
+    public void closeReadableDatabase() {
+        readableDatabase.close();
+    }
+
+    //Close writable database
+    public void closeWritableDatabase() {
         writableDatabase.close();
     }
 }
