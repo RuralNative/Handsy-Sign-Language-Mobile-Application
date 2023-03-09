@@ -1,14 +1,12 @@
 package com.ruralnative.handsy_sign_language_tutorial.database;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase;
 
-public class databaseHelper extends SQLiteOpenHelper {
+import androidx.annotation.NonNull;
+
+public class DatabaseHelper extends SQLiteOpenHelper {
     //Default DB Helper Attributes
     private static final String DATABASE_NAME = "handsyDatabase.db";
     private static final int DATABASE_VERSION = 1;
@@ -48,13 +46,13 @@ public class databaseHelper extends SQLiteOpenHelper {
             ")";
 
 
-    public databaseHelper(Context context) {
+    public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION, null);
     }
 
 
     @Override
-    public void onCreate(SQLiteDatabase database) {
+    public void onCreate(@NonNull SQLiteDatabase database) {
         database.execSQL(createUserInformationTableQuery);
         database.execSQL(createLessonInformationTableQuery);
         database.execSQL(createIdentificationTestTableQuery);
@@ -62,12 +60,11 @@ public class databaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
+    public void onUpgrade(@NonNull SQLiteDatabase database, int oldVersion, int newVersion) {
         database.execSQL("DROP TABLE IF EXISTS user_information_table");
         database.execSQL("DROP TABLE IF EXISTS lesson_information_table");
         database.execSQL("DROP TABLE IF EXISTS identification_test_table");
         database.execSQL("DROP TABLE IF EXISTS multiple_choice_test_table");
         onCreate(database);
     }
-
 }
