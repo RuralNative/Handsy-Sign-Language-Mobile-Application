@@ -1,9 +1,11 @@
 package com.ruralnative.handsy_sign_language_tutorial;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
+import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -11,11 +13,11 @@ import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
 
-import com.ruralnative.handsy_sign_language_tutorial.database.DatabaseMethodHelper;
+import com.ruralnative.handsy_sign_language_tutorial.database.DatabaseHelper;
+
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
-    private Context context;
-    private DatabaseMethodHelper helper;
+    private DatabaseHelper helper;
     private final String tableName = "user_information_table";
     private final String idColumn = "id";
     private final String userNameColumn = "user_name";
@@ -31,13 +33,15 @@ public class ExampleInstrumentedTest {
 
     @Before
     public void setup() {
-        context = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        helper = new DatabaseMethodHelper(context);
+        Context context = ApplicationProvider.getApplicationContext();
+        Log.d("TEST", "Context: " + context);
+        helper = new DatabaseHelper(context);
+        SQLiteDatabase databaseb = helper.getWritableDatabase();
     }
 
     private void insertSampleData() {
         helper.insertID(1, tableName);
-        helper.insertTextColumnDataByID("John Berlin", tableName, userNameColumn, "1");
+        helper.insertTextColumnData("John Berlin", tableName, userNameColumn, "1");
         helper.insertIntegerColumnDataByID(20, tableName, ageColumn, "1");
         helper.insertIntegerColumnDataByID(0, tableName, isPersonWithDisabilityColumn, "1");
         helper.insertIntegerColumnDataByID(0, tableName, isNewUserColumn, "1");
