@@ -28,6 +28,18 @@ public class UserInformationTableModel {
             this.accuracyPercentage = accuracyPercentage;
         }
 
+    public UserInformationTableModel(String userName, int age, int isPersonWithDisability, int isNewUser, int lessonLevel, int totalNumberOfTestTaken, int numberOfCorrectTestAnswers, int numberOfWrongTestAnswer, String accuracyPercentage) {
+        this.userName = userName;
+        this.age = age;
+        this.isPersonWithDisability = isPersonWithDisability;
+        this.isNewUser = isNewUser;
+        this.lessonLevel = lessonLevel;
+        this.totalNumberOfTestTaken = totalNumberOfTestTaken;
+        this.numberOfCorrectTestAnswers = numberOfCorrectTestAnswers;
+        this.numberOfWrongTestAnswer = numberOfWrongTestAnswer;
+        this.accuracyPercentage = accuracyPercentage;
+    }
+
     public int getId() {
         return id;
     }
