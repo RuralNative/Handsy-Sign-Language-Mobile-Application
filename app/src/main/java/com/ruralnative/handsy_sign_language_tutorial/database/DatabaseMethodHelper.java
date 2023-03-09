@@ -15,7 +15,9 @@ public class DatabaseMethodHelper {
     private final String defaultUpdateReturnStatement = "UPDATED NUMBER OF COLUMNS: ";
 
     //CLASS CONSTRUCTOR
-    DatabaseMethodHelper(Context instanceContext) {
+    public DatabaseMethodHelper() {
+    }
+    public DatabaseMethodHelper(Context instanceContext) {
         this.classContext = instanceContext;
     }
 
@@ -34,10 +36,10 @@ public class DatabaseMethodHelper {
                 }
                 cursor.close();
             }
-            readableDatabase.close();
         } catch (SQLiteException sqLiteException) {
             sqLiteException.printStackTrace();
         }
+        readableDatabase.close();
         return data;
     }
     //Select data from a certain column by ID
@@ -54,11 +56,24 @@ public class DatabaseMethodHelper {
                 result = cursor.getString(columnIndex);
             }
             cursor.close();
-            readableDatabase.close();
         } catch (SQLiteException sqLiteException) {
             sqLiteException.printStackTrace();
         }
+        readableDatabase.close();
         return result;
+    }
+    //Insert integer data to ID of a specific table
+    public String insertID(Integer value, String tableName) {
+        long newRowId = 0;
+        ContentValues values = new ContentValues();
+        values.put("id", value);
+        try {
+            newRowId = writableDatabase.insert(tableName, null, values);
+        } catch (SQLiteException sqLiteException) {
+            sqLiteException.printStackTrace();
+        }
+        writableDatabase.close();
+        return defaultUpdateReturnStatement + newRowId;
     }
     //Insert integer data to a certain table column by ID
     public String insertIntegerColumnDataByID(Integer value, String tableName, String tableColumn, String ID) {
@@ -70,10 +85,10 @@ public class DatabaseMethodHelper {
         values.put(tableColumn, integerValue);
         try {
             numRowsInserted = writableDatabase.insert(tableName, null, values);
-            readableDatabase.close();
         } catch (SQLiteException sqliteexception) {
             sqliteexception.printStackTrace();
         }
+        readableDatabase.close();
         return defaultUpdateReturnStatement + numRowsInserted;
     }
     //Insert integer data to a certain table column by ID
@@ -86,10 +101,10 @@ public class DatabaseMethodHelper {
         values.put(tableColumn, textValue);
         try {
             numRowsInserted = writableDatabase.insert(tableName, null, values);
-            readableDatabase.close();
         } catch (SQLiteException sqliteexception) {
             sqliteexception.printStackTrace();
         }
+        readableDatabase.close();
         return defaultUpdateReturnStatement + numRowsInserted;
     }
     //Update with a certain integer value the data in a certain table column of specific ID
@@ -98,7 +113,11 @@ public class DatabaseMethodHelper {
         values.put(columnName, newValue);
         String whereClause = "id = ?";
         String[] whereArgs = {String.valueOf(ID)};
-        writableDatabase.update(tableName, values, whereClause, whereArgs);
+        try {
+            writableDatabase.update(tableName, values, whereClause, whereArgs);
+        } catch (SQLiteException sqLiteException) {
+            sqLiteException.printStackTrace();
+        }
         writableDatabase.close();
     }
     //Update with a certain String value the data in a certain table column of specific ID
@@ -107,7 +126,11 @@ public class DatabaseMethodHelper {
         values.put(columnName, newValue);
         String whereClause = "id = ?";
         String[] whereArgs = {String.valueOf(ID)};
-        writableDatabase.update(tableName, values, whereClause, whereArgs);
+        try {
+            writableDatabase.update(tableName, values, whereClause, whereArgs);
+        } catch (SQLiteException sqLiteException) {
+            sqLiteException.printStackTrace();
+        }
         writableDatabase.close();
     }
 }

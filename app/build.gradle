@@ -29,6 +29,13 @@ android {
     buildFeatures {
         viewBinding true
     }
+    testOptions {
+        unitTests {
+            // Prevents the automatic mocking of SQLite classes
+            // and allows the use of the actual implementation.
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
