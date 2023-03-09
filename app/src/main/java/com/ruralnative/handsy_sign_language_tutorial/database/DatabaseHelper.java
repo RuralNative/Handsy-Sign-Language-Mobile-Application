@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 
@@ -13,8 +14,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     //CLASS ATTRIBUTES
     private static final String DATABASE_NAME = "handsyDatabase.db";
     private static final int DATABASE_VERSION = 1;
-    private final SQLiteDatabase readableDatabase = getReadableDatabase();
-    private final SQLiteDatabase writableDatabase = getWritableDatabase();
+    private final SQLiteDatabase readableDatabase = this.getReadableDatabase();
+    private final SQLiteDatabase writableDatabase = this.getWritableDatabase();
     String createUserInformationTableQuery = "CREATE TABLE user_information_table (" +
             "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "user_name TEXT, " +
@@ -56,21 +57,21 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     }
 
 
-    //GETTERS/SETTERS
-    public SQLiteDatabase getReadableDatabase() {
-        return this.readableDatabase;
-    }
-    public SQLiteDatabase getWritableDatabase() {
-        return this.writableDatabase;
-    }
-
     //OVERRIDE SUPERCLASS METHODS
     @Override
     public void onCreate(@NonNull SQLiteDatabase database) {
-        database.execSQL(createUserInformationTableQuery);
-        database.execSQL(createLessonInformationTableQuery);
-        database.execSQL(createIdentificationTestTableQuery);
-        database.execSQL(createMultipleChoiceTestTableQuery);
+        if (!TextUtils.isEmpty(createUserInformationTableQuery)) {
+            database.execSQL(createUserInformationTableQuery);
+        }
+        if (!TextUtils.isEmpty(createLessonInformationTableQuery)) {
+            database.execSQL(createLessonInformationTableQuery);
+        }
+        if (!TextUtils.isEmpty(createIdentificationTestTableQuery)) {
+            database.execSQL(createIdentificationTestTableQuery);
+        }
+        if (!TextUtils.isEmpty(createMultipleChoiceTestTableQuery)) {
+            database.execSQL(createMultipleChoiceTestTableQuery);
+        }
     }
 
     @Override
@@ -103,6 +104,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         readableDatabase.close();
         return data;
     }
+
     //Select data from a certain column by ID
     public String getColumnDataByID(String tableName, String tableColumn, String ID) {
         String result = "";
@@ -123,41 +125,52 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         readableDatabase.close();
         return result;
     }
+
+
     //Insert integer data to ID of a specific table
     public void insertID(Integer value, String tableName) {
         ContentValues values = new ContentValues();
         values.put("id", value);
         try {
-            writableDatabase.insert(tableName, null, values);
+            if (writableDatabase != null) {
+                writableDatabase.insert(tableName, null, values);
+            }
         } catch (SQLiteException sqLiteException) {
             sqLiteException.printStackTrace();
         }
         writableDatabase.close();
     }
+
     //Insert integer data to a certain table column by ID
     public void insertIntegerColumnDataByID(int value, String tableName, String tableColumn, int condition) {
         ContentValues values = new ContentValues();
         values.put(tableColumn, value);
         String[] arguments = {String.valueOf(condition)}; // replace 1 with the value you want to match
         try {
-            writableDatabase.update(tableName, values, "id=?", arguments);
+            if (writableDatabase != null) {
+                writableDatabase.update(tableName, values, "id=?", arguments);
+            }
         } catch (SQLiteException sqle) {
             sqle.printStackTrace();
         }
         writableDatabase.close();
     }
+
     //Insert integer data to a certain table column by ID
-    public void insertTextColumnData(String value, String tableName, String tableColumn, int condition) {
+    public void insertTextColumnDataByID(String value, String tableName, String tableColumn, int condition) {
         ContentValues values = new ContentValues();
         values.put(tableColumn, value);
         String[] arguments = {String.valueOf(condition)}; // replace 1 with the value you want to match
         try {
-            writableDatabase.update(tableName, values, "id=?", arguments);
+            if (writableDatabase != null) {
+                writableDatabase.update(tableName, values, "id=?", arguments);
+            }
         } catch (SQLiteException sqle) {
             sqle.printStackTrace();
         }
         writableDatabase.close();
     }
+
     //Update with a certain integer value the data in a certain table column of specific ID
     public void updateIntegerColumnDataByID(Integer newValue, String tableName, String columnName, int ID) {
         ContentValues values = new ContentValues();
@@ -165,12 +178,15 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         String whereClause = "id = ?";
         String[] whereArgs = {String.valueOf(ID)};
         try {
-            writableDatabase.update(tableName, values, whereClause, whereArgs);
+            if (writableDatabase != null) {
+                writableDatabase.update(tableName, values, whereClause, whereArgs);
+            }
         } catch (SQLiteException sqLiteException) {
             sqLiteException.printStackTrace();
         }
         writableDatabase.close();
     }
+
     //Update with a certain String value the data in a certain table column of specific ID
     public void updateTextColumnDataByID(String newValue, String tableName, String columnName, int ID) {
         ContentValues values = new ContentValues();

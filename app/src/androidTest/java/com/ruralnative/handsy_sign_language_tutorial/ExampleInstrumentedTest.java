@@ -6,6 +6,7 @@ import android.util.Log;
 
 import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -33,23 +34,23 @@ public class ExampleInstrumentedTest {
 
     @Before
     public void setup() {
-        Context context = ApplicationProvider.getApplicationContext();
+        Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
         Log.d("TEST", "Context: " + context);
         helper = new DatabaseHelper(context);
-        SQLiteDatabase databaseb = helper.getWritableDatabase();
+        SQLiteDatabase database = helper.getWritableDatabase();
     }
 
     private void insertSampleData() {
         helper.insertID(1, tableName);
-        helper.insertTextColumnData("John Berlin", tableName, userNameColumn, "1");
-        helper.insertIntegerColumnDataByID(20, tableName, ageColumn, "1");
-        helper.insertIntegerColumnDataByID(0, tableName, isPersonWithDisabilityColumn, "1");
-        helper.insertIntegerColumnDataByID(0, tableName, isNewUserColumn, "1");
-        helper.insertIntegerColumnDataByID(1, tableName, lessonLevelColumn, "1");
-        helper.insertIntegerColumnDataByID(100, tableName, totalNumberOfTestTakenColumn, "1");
-        helper.insertIntegerColumnDataByID(60, tableName, numberOfCorrectTestAnswersColumn, "1");
-        helper.insertIntegerColumnDataByID(40, tableName, numberOfWrongTestAnswerColumn, "1");
-        helper.insertTextColumnDataByID("60%", tableName, accuracyPercentageColumn, "1");
+        helper.insertTextColumnDataByID("John Berlin", tableName, userNameColumn, 1);
+        helper.insertIntegerColumnDataByID(20, tableName, ageColumn, 1);
+        helper.insertIntegerColumnDataByID(0, tableName, isPersonWithDisabilityColumn, 1);
+        helper.insertIntegerColumnDataByID(0, tableName, isNewUserColumn, 1);
+        helper.insertIntegerColumnDataByID(1, tableName, lessonLevelColumn, 1);
+        helper.insertIntegerColumnDataByID(100, tableName, totalNumberOfTestTakenColumn, 1);
+        helper.insertIntegerColumnDataByID(60, tableName, numberOfCorrectTestAnswersColumn, 1);
+        helper.insertIntegerColumnDataByID(40, tableName, numberOfWrongTestAnswerColumn, 1);
+        helper.insertTextColumnDataByID("60%", tableName, accuracyPercentageColumn, 1);
     }
 
     @Test
