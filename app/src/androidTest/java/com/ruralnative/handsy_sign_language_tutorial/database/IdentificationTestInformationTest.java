@@ -62,7 +62,6 @@ public class IdentificationTestInformationTest {
 
     /*
     // WARNING: This test is already passed. Rerunning the test would delete all lessons inside the database, as a prerequisite to test the size of the lessonArray, done by calling the deleteAllLessons() method. Run only if necessary
-    */
     @Test
     public void testGetAllIdentificationTests() {
         identificationTestTableDAO.deleteAllIdentificationTests();
@@ -77,7 +76,7 @@ public class IdentificationTestInformationTest {
         assertEquals(testOne.getLessonKey(), allTests.get(0).getLessonKey());
         assertEquals(testTwo.getLessonKey(), allTests.get(1).getLessonKey());
     }
-
+    */
 
     @Test
     public void testUpdateLesson() {
