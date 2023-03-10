@@ -1,9 +1,7 @@
 package com.ruralnative.handsy_sign_language_tutorial.database;
 
-import androidx.annotation.Nullable;
-
 public class UserInformationTableModel {
-        @Nullable private int id;
+        private int id;
         private String userName;
         private int age;
         private int isPersonWithDisability;
@@ -13,9 +11,6 @@ public class UserInformationTableModel {
         private int numberOfCorrectTestAnswers;
         private int numberOfWrongTestAnswer;
         private String accuracyPercentage;
-
-        public UserInformationTableModel() {
-        }
 
         public UserInformationTableModel(int id, String userName, int age, int isPersonWithDisability, int isNewUser, int lessonLevel, int totalNumberOfTestTaken, int numberOfCorrectTestAnswers, int numberOfWrongTestAnswer, String accuracyPercentage) {
             this.id = id;
@@ -60,10 +55,6 @@ public class UserInformationTableModel {
 
     public int getAge() {
         return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public int getIsPersonWithDisability() {

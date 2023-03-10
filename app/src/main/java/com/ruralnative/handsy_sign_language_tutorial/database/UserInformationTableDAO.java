@@ -12,7 +12,6 @@ public class UserInformationTableDAO {
     private final DatabaseHelper databaseHelper;
     private final String userInformationTable = "user_information_table";
     private final String[] userInformationColumns = {"id", "user_name", "age", "is_person_with_disability", "is_new_user", "lesson_level", "total_number_of_test_taken", "number_of_correct_test_answers", "number_of_wrong_test_answer", "accuracy_percentage"};
-    private final String id = "id";
     private final String userName = "user_name";
     private final String age = "age";
     private final String isPersonWithDisability = "is_person_with_disability";
@@ -68,8 +67,17 @@ public class UserInformationTableDAO {
         Cursor cursor = database.rawQuery("SELECT * FROM " + userInformationTable, null);
         if (cursor.moveToFirst()) {
             do {
-                UserInformationTableModel user = new UserInformationTableModel(cursor.getInt(0), cursor.getString(1), cursor.getInt(2), cursor.getInt(3), cursor.getInt(4),
-                        cursor.getInt(5), cursor.getInt(6), cursor.getInt(7), cursor.getInt(8), cursor.getString(9));
+                UserInformationTableModel user = new UserInformationTableModel(
+                        cursor.getInt(0),
+                        cursor.getString(1),
+                        cursor.getInt(2),
+                        cursor.getInt(3),
+                        cursor.getInt(4),
+                        cursor.getInt(5),
+                        cursor.getInt(6),
+                        cursor.getInt(7),
+                        cursor.getInt(8),
+                        cursor.getString(9));
             } while (cursor.moveToNext());
         }
         cursor.close();
