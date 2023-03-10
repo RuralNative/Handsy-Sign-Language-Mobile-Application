@@ -65,7 +65,7 @@ public class UserInformationTableDAO {
     public List<UserInformationTableModel> getAllUsers() {
         List<UserInformationTableModel> userList = new ArrayList<>();
         SQLiteDatabase database = databaseHelper.getReadableDatabase();
-        Cursor cursor = database.rawQuery("SELECT * FROM users", null);
+        Cursor cursor = database.rawQuery("SELECT * FROM " + userInformationTable, null);
         if (cursor.moveToFirst()) {
             do {
                 UserInformationTableModel user = new UserInformationTableModel(cursor.getInt(0), cursor.getString(1), cursor.getInt(2), cursor.getInt(3), cursor.getInt(4),
@@ -90,14 +90,14 @@ public class UserInformationTableDAO {
         values.put(numberOfCorrectTestAnswers, user.getNumberOfCorrectTestAnswers());
         values.put(numberOfWrongTestAnswer, user.getNumberOfWrongTestAnswer());
         values.put(accuracyPercentage, user.getAccuracyPercentage());
-        database.update("users", values, "id = ?", new String[]{String.valueOf(user.getId())});
+        database.update(userInformationTable, values, "id = ?", new String[]{String.valueOf(user.getId())});
         database.close();
     }
 
     // Delete a user from the database
     public void deleteUser(UserInformationTableModel user) {
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
-        database.delete("users", "id = ?", new String[]{String.valueOf(user.getId())});
+        database.delete(userInformationTable, "id = ?", new String[]{String.valueOf(user.getId())});
         database.close();
     }
 }
