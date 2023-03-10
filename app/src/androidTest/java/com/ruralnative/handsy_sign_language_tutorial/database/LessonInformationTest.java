@@ -1,4 +1,4 @@
-package com.ruralnative.handsy_sign_language_tutorial;
+package com.ruralnative.handsy_sign_language_tutorial.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -18,9 +18,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-import com.ruralnative.handsy_sign_language_tutorial.database.DatabaseHelper;
 import com.ruralnative.handsy_sign_language_tutorial.database.LessonInformationModel;
-import com.ruralnative.handsy_sign_language_tutorial.database.LessonInformationTableDAO;
 
 @RunWith(AndroidJUnit4.class)
 public class LessonInformationTest {

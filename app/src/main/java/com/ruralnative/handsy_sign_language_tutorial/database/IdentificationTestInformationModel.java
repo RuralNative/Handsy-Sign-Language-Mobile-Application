@@ -4,14 +4,17 @@ public class IdentificationTestInformationModel {
     private int id;
     private int lessonKey;
     private String question;
-    private String correctQuestion;
+    private String correctAnswer;
 
     public IdentificationTestInformationModel() {}
-    public IdentificationTestInformationModel(int id, int lessonKey, String question, String correctQuestion) {
+    public IdentificationTestInformationModel(int id, int lessonKey, String question, String correctAnswer) {
         this.id = id;
         this.lessonKey = lessonKey;
         this.question = question;
-        this.correctQuestion = correctQuestion;
+        this.correctAnswer = correctAnswer;
+    }
+
+    public IdentificationTestInformationModel(int lessonKey, String question, String correctAnswer) {
     }
 
     public int getId() {
@@ -38,11 +41,11 @@ public class IdentificationTestInformationModel {
         this.question = question;
     }
 
-    public String getCorrectQuestion() {
-        return correctQuestion;
+    public String getCorrectAnswer() {
+        return correctAnswer;
     }
 
-    public void setCorrectQuestion(String correctQuestion) {
-        this.correctQuestion = correctQuestion;
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
     }
 }

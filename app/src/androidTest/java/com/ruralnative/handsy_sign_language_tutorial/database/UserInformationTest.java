@@ -1,4 +1,4 @@
-package com.ruralnative.handsy_sign_language_tutorial;
+package com.ruralnative.handsy_sign_language_tutorial.database;
 
 import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
 
