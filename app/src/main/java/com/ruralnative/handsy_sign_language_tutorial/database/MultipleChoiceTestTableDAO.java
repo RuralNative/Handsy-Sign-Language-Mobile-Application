@@ -30,16 +30,16 @@ public class MultipleChoiceTestTableDAO {
         values.put(lessonKey, test.getLessonKey());
         values.put(question, test.getQuestion());
         values.put(correctChoice, test.getCorrectChoice());
-        values.put(correctChoice, test.getFirstIncorrectChoice());
-        values.put(correctChoice, test.getSecondIncorrectChoice());
-        values.put(correctChoice, test.getThirdIncorrectChoice());
+        values.put(firstIncorrectChoice, test.getFirstIncorrectChoice());
+        values.put(second_incorrect_choice, test.getSecondIncorrectChoice());
+        values.put(third_incorrect_choice, test.getThirdIncorrectChoice());
         long columnID = database.insert(multipleChoiceTestTable, null, values);
         test.setId((int) columnID);
         database.close();
         return (int) columnID;
     }
 
-    public MultipleChoiceTestInformationModel getIdentificationTestByID(int id) {
+    public MultipleChoiceTestInformationModel getMultipleChoiceTestByID(int id) {
         SQLiteDatabase database = databaseHelper.getReadableDatabase();
         Cursor cursor = database.query(
                 multipleChoiceTestTable,
