@@ -22,7 +22,7 @@ public class LessonInformationTableDAO {
     }
 
     //Add lesson object to the table with the method running the INSERT function determining the column ID
-    public void addLesson(LessonInformationModel lesson) {
+    public int addLesson(LessonInformationModel lesson) {
         SQLiteDatabase database = databaseHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(lessonName, lesson.getLessonName());
@@ -31,6 +31,7 @@ public class LessonInformationTableDAO {
         long columnID = database.insert(lessonInformationTable, null, values);
         lesson.setId((int) columnID);
         database.close();
+        return (int) columnID;
     }
 
     public LessonInformationModel getLessonById(int id) {
@@ -71,6 +72,7 @@ public class LessonInformationTableDAO {
                         cursor.getString(2),
                         cursor.getString(3)
                 );
+                lessons.add(user);
             } while (cursor.moveToNext());
         }
         cursor.close();
@@ -95,5 +97,11 @@ public class LessonInformationTableDAO {
         int rowsDeleted = database.delete(lessonInformationTable, "id = ?", new String[] {String.valueOf(id)});
         database.close();
         return rowsDeleted;
+    }
+
+    public void deleteAllLessons() {
+        SQLiteDatabase database = databaseHelper.getWritableDatabase();
+        database.delete(lessonInformationTable, null, null);
+        database.close();
     }
 }

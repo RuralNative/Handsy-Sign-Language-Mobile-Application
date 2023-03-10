@@ -14,6 +14,12 @@ public class LessonInformationModel {
         this.lessonDescription = lessonDescription;
     }
 
+    public LessonInformationModel(String lessonName, String lessonMediaSource, String lessonDescription) {
+        this.lessonName = lessonName;
+        this.lessonMediaSource = lessonMediaSource;
+        this.lessonDescription = lessonDescription;
+    }
+
     public int getId() {
         return id;
     }
