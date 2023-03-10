@@ -1,6 +1,9 @@
 package com.ruralnative.handsy_sign_language_tutorial;
 
+import static androidx.test.core.app.ApplicationProvider.getApplicationContext;
+
 import android.content.Context;
+import android.util.Log;
 
 import androidx.test.core.app.ApplicationProvider;
 
@@ -22,15 +25,40 @@ public class UserInformationTest {
 
     @Before
     public void setUp() {
-        Context context = ApplicationProvider.getApplicationContext();
+        Context context = getApplicationContext();
         userDAO = new UserInformationTableDAO(context);
     }
 
     @After
-    public void testAddAndGetUserByID() {
+    public void tearDown() {
+        userDAO = null;
+    }
+
+    @Test
+    public void testAddUser() {
+        UserInformationTableModel user = new UserInformationTableModel("John Berlin", 0, 1, 1, 0, 0, 0, 0, "0%");
+        long id = userDAO.addUser(user);
+        assertTrue(id > 0);
+    }
+
+    @Test
+    public void checkIfIDColumnAutoincrements() {
+        UserInformationTableModel userOne = new UserInformationTableModel("John Berlin", 20, 0, 1, 10, 100, 60, 40, "60%");
+        UserInformationTableModel userTwo = new UserInformationTableModel("John Berlin", 20, 0, 1, 10, 100, 60, 40, "60%");
+        long idOne = userDAO.addUser(userOne);
+        Log.d("User One ID", String.valueOf(idOne));
+        long idTwo = userDAO.addUser(userTwo);
+        Log.d("User Two ID", String.valueOf(idTwo));
+        assertEquals(userOne.getId(), (int) idOne);
+        Log.d("Assertion Argument for One", userOne.getId() + " " + (int) idOne);
+        assertEquals(userTwo.getId(), (int) idTwo);
+        Log.d("Assertion Argument for Two", userTwo.getId() + " " + (int) idTwo);
+    }
+
+    @Test
+    public void testGetUserByID() {
         UserInformationTableModel user = new UserInformationTableModel("John Berlin", 20, 0, 1, 10, 100, 60, 40, "60%");
         userDAO.addUser(user);
-
         UserInformationTableModel retrievedUser = userDAO.getUserById(user.getId());
         assertNotNull(retrievedUser);
         assertEquals(user.getId(), retrievedUser.getId());
@@ -44,5 +72,4 @@ public class UserInformationTest {
         assertEquals(user.getNumberOfWrongTestAnswer(), retrievedUser.getNumberOfWrongTestAnswer());
         assertEquals(user.getAccuracyPercentage(), retrievedUser.getAccuracyPercentage());
     }
-
 }
