@@ -21,7 +21,7 @@ public class MainScreen extends AppCompatActivity {
 
     private void createDatabase() {
         try {
-            databaseHelper.createDatabase();
+            databaseHelper.prepopulateDatabase();
         } catch (IOException e) {
             e.printStackTrace();
         }

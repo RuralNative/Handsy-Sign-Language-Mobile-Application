@@ -8,7 +8,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -69,26 +68,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         database.execSQL("DROP TABLE IF EXISTS identification_test_table");
         onCreate(database);
     }
-    public void createDatabase() throws IOException {
-        boolean databaseExist = checkDatabaseExist();
+
+    public void prepopulateDatabase() throws IOException {
+        boolean databaseExist = checkDatabaseFileExist();
         if (!databaseExist) {
             this.getWritableDatabase();
 
+            //Read database file content from assets directory
             InputStream inputStream = context.getAssets().open(DATABASE_NAME);
 
+            //Write contents to new database file
             OutputStream outputStream = Files.newOutputStream(Paths.get(getDatabasePath()));
             byte[] buffer = new byte[1024];
             int length;
             while ((length = inputStream.read(buffer)) > 0) {
                 outputStream.write(buffer, 0, length);
             }
+
+            //Closes all streams
             outputStream.flush();
             outputStream.close();
             inputStream.close();
         }
     }
 
-    private boolean checkDatabaseExist() {
+    private boolean checkDatabaseFileExist() {
         SQLiteDatabase checkDB = null;
         try {
             String path = getDatabasePath();
