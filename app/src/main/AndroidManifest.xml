@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,30 +15,27 @@
         android:theme="@style/Theme.HandsySignLanguageTutorial"
         tools:targetApi="31">
         <activity
-            android:name=".IdentificationTestActivity"
+            android:name=".lessonAndTest.TestIdentificationActivity"
             android:exported="false" />
         <activity
-            android:name=".MultipleChoiceTestActivity"
+            android:name=".lessonAndTest.TestMultipleChoiceActivity"
             android:exported="false" />
         <activity
             android:name=".lessonAndTest.LessonActivity"
             android:exported="false" />
         <activity
-            android:name=".MainScreen"
-            android:exported="false" />
-        <activity
-            android:name=".mainScreen"
+            android:name=".mainScreen.MainScreen"
             android:exported="false"
             android:label="@string/title_activity_main_screen"
             android:theme="@style/Theme.HandsySignLanguageTutorial.NoActionBar" />
         <activity
-            android:name=".DevelopersMessageScreen"
+            android:name=".introductoryScreen.DevelopersMessageScreen"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
             android:label="@string/title_activity_developers_message_screen"
             android:theme="@style/Theme.HandsySignLanguageTutorial.Fullscreen" />
         <activity
-            android:name=".UserIntroductionScreen"
+            android:name=".introductoryScreen.UserIntroductionScreen"
             android:exported="false" />
         <activity
             android:name=".WelcomeScreenActivity"

@@ -93,7 +93,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    private boolean checkDatabaseFileExist() {
+    boolean checkDatabaseFileExist() {
         SQLiteDatabase checkDB = null;
         try {
             String path = getDatabasePath();
@@ -108,6 +108,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private String getDatabasePath() {
-        return context.getFilesDir().getPath() + File.separator + DATABASE_NAME;
+        return context.getFilesDir().getPath() + File.separator + DATABASE_NAME_FOR_PREPOPULATE;
     }
 }
