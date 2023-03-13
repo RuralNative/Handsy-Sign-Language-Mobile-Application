@@ -16,7 +16,8 @@ import java.nio.file.Paths;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     Context context;
-    private static final String DATABASE_NAME = "handsy_database.db";
+    private static final String DATABASE_NAME = "handsy_application_database.db";
+    private static final String DATABASE_NAME_FOR_PREPOPULATE = "handsy_database.db";
     private static final int DATABASE_VERSION = 1;
     private static final String CREATE_TABLE_USER_INFORMATION = "CREATE TABLE user_information_table " +
             "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -46,7 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "lesson_key INT, " +
             "question TEXT, " +
-            "correct_answer)";
+            "correct_answer TEXT)";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -75,7 +76,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             this.getWritableDatabase();
 
             //Read database file content from assets directory
-            InputStream inputStream = context.getAssets().open(DATABASE_NAME);
+            InputStream inputStream = context.getAssets().open(DATABASE_NAME_FOR_PREPOPULATE);
 
             //Write contents to new database file
             OutputStream outputStream = Files.newOutputStream(Paths.get(getDatabasePath()));

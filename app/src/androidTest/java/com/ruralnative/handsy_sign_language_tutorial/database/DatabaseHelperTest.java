@@ -21,7 +21,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 
 public class DatabaseHelperTest {
-    private static final String DATABASE_NAME = "handsy_database.db";
+    private static final String DATABASE_NAME = "handsy_test_database.db";
 
     private Context context;
     private DatabaseHelper databaseHelper;
