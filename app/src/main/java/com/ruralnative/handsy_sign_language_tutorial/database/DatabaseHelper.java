@@ -96,7 +96,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             inputStream.close();
     }
 
-    private boolean checkIfDatabaseFileExist() {
+    boolean checkIfDatabaseFileExist() {
         databaseFile = context.getDatabasePath(DATABASE_NAME);
         return databaseFile.exists();
     }
