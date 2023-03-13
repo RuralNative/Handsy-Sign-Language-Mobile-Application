@@ -2,7 +2,6 @@ package com.ruralnative.handsy_sign_language_tutorial.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
@@ -12,13 +11,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     Context context;
     private static final String DATABASE_NAME = "handsy_application_database.db";
     private static final String DATABASE_NAME_FOR_PREPOPULATE = "handsy_database.db";
     private static final int DATABASE_VERSION = 1;
+    File databaseFile;
     private static final String CREATE_TABLE_USER_INFORMATION = "CREATE TABLE user_information_table " +
             "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "user_name TEXT, " +
@@ -51,6 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
@@ -59,6 +59,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         database.execSQL(CREATE_LESSON_INFORMATION_TABLE);
         database.execSQL(CREATE_MULTIPLE_CHOICE_TEST_TABLE);
         database.execSQL(CREATE_IDENTIFICATION_TEST_TABLE);
+        if(!checkIfDatabaseFileExist()) {
+            try {
+                prepopulateDatabase();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     @Override
@@ -71,43 +78,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void prepopulateDatabase() throws IOException {
-        boolean databaseExist = checkDatabaseFileExist();
-        if (!databaseExist) {
-            this.getWritableDatabase();
-
-            //Read database file content from assets directory
+            // Open the .db file in the assets folder
             InputStream inputStream = context.getAssets().open(DATABASE_NAME_FOR_PREPOPULATE);
+            // Create a new file in the default location for the database
+            OutputStream outputStream = Files.newOutputStream(databaseFile.toPath());
 
-            //Write contents to new database file
-            OutputStream outputStream = Files.newOutputStream(Paths.get(getDatabasePath()));
+            // Copy the contents of the .db file to the new file
             byte[] buffer = new byte[1024];
             int length;
             while ((length = inputStream.read(buffer)) > 0) {
                 outputStream.write(buffer, 0, length);
             }
 
-            //Closes all streams
+            // Close the streams
             outputStream.flush();
             outputStream.close();
             inputStream.close();
-        }
     }
 
-    boolean checkDatabaseFileExist() {
-        SQLiteDatabase checkDB = null;
-        try {
-            String path = getDatabasePath();
-            checkDB = SQLiteDatabase.openDatabase(path, null, SQLiteDatabase.OPEN_READWRITE);
-        } catch (SQLiteException e) {
-            // database does not exist
-        }
-        if (checkDB != null) {
-            checkDB.close();
-        }
-        return checkDB != null;
-    }
-
-    private String getDatabasePath() {
-        return context.getFilesDir().getPath() + File.separator + DATABASE_NAME_FOR_PREPOPULATE;
+    private boolean checkIfDatabaseFileExist() {
+        databaseFile = context.getDatabasePath(DATABASE_NAME);
+        return databaseFile.exists();
     }
 }
