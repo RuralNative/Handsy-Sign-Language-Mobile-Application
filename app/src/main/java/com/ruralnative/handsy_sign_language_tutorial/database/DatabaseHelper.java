@@ -18,7 +18,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME_FOR_PREPOPULATE = "handsy_database.db";
     private static final int DATABASE_VERSION = 1;
     File databaseFile;
-    private static final String CREATE_TABLE_USER_INFORMATION = "CREATE TABLE user_information_table " +
+    private static final String CREATE_TABLE_USER_INFORMATION = "CREATE TABLE IF NOT EXISTS user_information_table " +
             "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "user_name TEXT, " +
             "age INTEGER, " +
@@ -29,12 +29,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "number_of_correct_test_answers INTEGER, " +
             "number_of_wrong_test_answer INTEGER, " +
             "accuracy_percentage TEXT)";
-    private static final String CREATE_LESSON_INFORMATION_TABLE = "CREATE TABLE lesson_information_table " +
+    private static final String CREATE_LESSON_INFORMATION_TABLE = "CREATE TABLE IF NOT EXISTS lesson_information_table " +
             "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "lesson_name TEXT, " +
             "lesson_media_source TEXT, " +
             "lesson_description TEXT)";
-    private static final String CREATE_MULTIPLE_CHOICE_TEST_TABLE = "CREATE TABLE multiple_choice_test_table " +
+    private static final String CREATE_MULTIPLE_CHOICE_TEST_TABLE = "CREATE TABLE IF NOT EXISTS multiple_choice_test_table " +
             "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "lesson_key INT, " +
             "question TEXT, " +
@@ -42,7 +42,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "first_incorrect_choice TEXT, " +
             "second_incorrect_choice TEXT, " +
             "third_incorrect_choice TEXT)";
-    private static final String CREATE_IDENTIFICATION_TEST_TABLE = "CREATE TABLE identification_test_table " +
+    private static final String CREATE_IDENTIFICATION_TEST_TABLE = "CREATE TABLE IF NOT EXISTS identification_test_table " +
             "(id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "lesson_key INT, " +
             "question TEXT, " +
